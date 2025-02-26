@@ -15,6 +15,8 @@ def comprar_boleto():
     global total_boletos, ingresos_primera, ingresos_segunda, ingresos_tercera
     global ingresos_nacional, ingresos_internacional, ingresos_ruta_caracas_porlamar
     global ingresos_ruta_porlamar_caracas, servicios_adicionales
+    
+    num_boletos = int(input("Ingrese el número de boletos a comprar: "))
 
 def ver_sistema():
     print("\nREPORTE DE VENTAS")
