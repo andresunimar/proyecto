@@ -11,6 +11,21 @@ precio_primera = 200
 precio_segunda = 150
 precio_tercera = 100
 
+def ver_sistema():
+    print("\nREPORTE DE VENTAS")
+    print(f"Total de boletos vendidos: {total_boletos}")
+    print("Ingresos por clase:")
+    print(f"  Primera Clase: ${ingresos_primera:.2f}")
+    print(f"  Segunda Clase: ${ingresos_segunda:.2f}")
+    print(f"  Tercera Clase: ${ingresos_tercera:.2f}")
+    print("Ingresos por tipo de boleto:")
+    print(f"  Nacional: ${ingresos_nacional:.2f}")
+    print(f"  Internacional: ${ingresos_internacional:.2f}")
+    print("Ingresos por ruta de viaje:")
+    print(f"  Caracas - Porlamar: ${ingresos_ruta_caracas_porlamar:.2f}")
+    print(f"  Porlamar - Caracas: ${ingresos_ruta_porlamar_caracas:.2f}")
+    print(f"Número de servicios adicionales solicitados: {servicios_adicionales}")
+
 def ejecutar():
     while True:
         print("\nMenú:")
