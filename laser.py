@@ -17,6 +17,64 @@ def comprar_boleto():
     global ingresos_ruta_porlamar_caracas, servicios_adicionales
     
     num_boletos = int(input("Ingrese el número de boletos a comprar: "))
+    for _ in range(num_boletos):
+        nombre = input("Nombre del pasajero: ")
+        cedula_tipo = input("Seleccione tipo de cédula (V/E): ")
+        cedula_numero = input("Ingrese número de cédula: ")
+        edad = int(input("Edad del pasajero: "))
+        
+        if edad < 18:
+            print("Solo se venden boletos a mayores de 18 años.")
+            continue
+        
+        clase = input("Seleccione la clase (Primera Clase, Segunda Clase, Tercera Clase): ")
+        if clase == "Primera Clase":
+            precio = precio_primera
+        elif clase == "Segunda Clase":
+            precio = precio_segunda
+        elif clase == "Tercera Clase":
+            if edad >= 60:
+                print("Los boletos de tercera clase no están disponibles para mayores de 60 años.")
+                continue
+            precio = precio_tercera
+        else:
+            print("Clase no válida.")
+            continue
+        
+        tipo = input("Tipo de boleto (N para Nacional, I para Internacional): ")
+        if tipo.upper() == "N":
+            tipo = "Nacional"
+        else:
+            tipo = "Internacional"
+        
+        ruta = input("Ingrese la ruta de viaje (ejemplo: Caracas - Porlamar): ")
+        
+        if edad < 12 or edad >= 60:
+            precio *= 0.9  # Aplicar descuento del 10%
+        
+        adicional = input("¿Requiere servicios adicionales? (S/N): ")
+        if adicional.upper() == "S":
+            servicios_adicionales += 1
+        
+        total_boletos += 1
+        if clase == "Primera Clase":
+            ingresos_primera += precio
+        elif clase == "Segunda Clase":
+            ingresos_segunda += precio
+        elif clase == "Tercera Clase":
+            ingresos_tercera += precio
+        
+        if tipo == "Nacional":
+            ingresos_nacional += precio
+        else:
+            ingresos_internacional += precio
+        
+        if ruta == "Caracas - Porlamar":
+            ingresos_ruta_caracas_porlamar += precio
+        elif ruta == "Porlamar - Caracas":
+            ingresos_ruta_porlamar_caracas += precio
+        
+        print(f"Boleto comprado con éxito. Total a pagar: ${precio:.2f}")
 
 def ver_sistema():
     print("\nREPORTE DE VENTAS")
@@ -32,6 +90,7 @@ def ver_sistema():
     print(f"  Caracas - Porlamar: ${ingresos_ruta_caracas_porlamar:.2f}")
     print(f"  Porlamar - Caracas: ${ingresos_ruta_porlamar_caracas:.2f}")
     print(f"Número de servicios adicionales solicitados: {servicios_adicionales}")
+
 
 def ejecutar():
     while True:
