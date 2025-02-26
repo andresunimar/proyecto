@@ -28,23 +28,23 @@ Definir variables:
             
             Solicitar clase  
             Si clase es "Primera Clase" Entonces  
-                precio ← precio_primera  
+                precio = precio_primera  
             Sino Si clase es "Segunda Clase" Entonces  
-                precio ← precio_segunda  
+                precio = precio_segunda  
             Sino Si clase es "Tercera Clase" Entonces  
                 Si edad >= 60 Entonces  
                     Mostrar "No disponible para mayores de 60 años."  
                     Continuar  
-                precio ← precio_tercera  
+                precio = precio_tercera  
             Sino  
                 Mostrar "Clase no válida."  
                 Continuar  
             
             Solicitar tipo (N para Nacional, I para Internacional)  
             Si tipo es "N" Entonces  
-                tipo ← "Nacional"  
+                tipo = "Nacional"  
             Sino  
-                tipo ← "Internacional"  
+                tipo = "Internacional"  
             
             Solicitar ruta  
             
