@@ -1,14 +1,77 @@
 INICIO  
 Definir variables:  
-        total_boletos ← 0  
-        ingresos_primera ← 0  
-        ingresos_segunda ← 0  
-        ingresos_tercera ← 0  
-        ingresos_nacional ← 0  
-        ingresos_internacional ← 0  
-        ingresos_ruta_caracas_porlamar ← 0  
-        ingresos_ruta_porlamar_caracas ← 0  
-        servicios_adicionales ← 0  
-        precio_primera ← 200  
-        precio_segunda ← 150  
-        precio_tercera ← 100  
+        total_boletos = 0  
+        ingresos_primera = 0  
+        ingresos_segunda = 0  
+        ingresos_tercera = 0  
+        ingresos_nacional = 0  
+        ingresos_internacional = 0  
+        ingresos_ruta_caracas_porlamar = 0  
+        ingresos_ruta_porlamar_caracas = 0  
+        servicios_adicionales = 0  
+        precio_primera = 200  
+        precio_segunda = 150  
+        precio_tercera = 100  
+
+
+    FUNCIÓN comprar_boleto()  
+        Solicitar num_boletos  
+        Para cada boleto en num_boletos hacer  
+            Solicitar nombre  
+            Solicitar cedula_tipo  
+            Solicitar cedula_numero  
+            Solicitar edad  
+            
+            Si edad < 18 Entonces  
+                Mostrar "Solo se venden boletos a mayores de 18 años."  
+                Continuar  
+            
+            Solicitar clase  
+            Si clase es "Primera Clase" Entonces  
+                precio ← precio_primera  
+            Sino Si clase es "Segunda Clase" Entonces  
+                precio ← precio_segunda  
+            Sino Si clase es "Tercera Clase" Entonces  
+                Si edad >= 60 Entonces  
+                    Mostrar "No disponible para mayores de 60 años."  
+                    Continuar  
+                precio ← precio_tercera  
+            Sino  
+                Mostrar "Clase no válida."  
+                Continuar  
+            
+            Solicitar tipo (N para Nacional, I para Internacional)  
+            Si tipo es "N" Entonces  
+                tipo ← "Nacional"  
+            Sino  
+                tipo ← "Internacional"  
+            
+            Solicitar ruta  
+            
+            Si edad < 12 o edad >= 60 Entonces  
+                Aplicar descuento del 10% al precio  
+            
+            Solicitar adicional  
+            Si adicional es "S" Entonces  
+                Incrementar servicios_adicionales  
+            
+            Incrementar total_boletos  
+            
+            Si clase es "Primera Clase" Entonces  
+                Incrementar ingresos_primera en precio  
+            Sino Si clase es "Segunda Clase" Entonces  
+                Incrementar ingresos_segunda en precio  
+            Sino Si clase es "Tercera Clase" Entonces  
+                Incrementar ingresos_tercera en precio  
+            
+            Si tipo es "Nacional" Entonces  
+                Incrementar ingresos_nacional en precio  
+            Sino  
+                Incrementar ingresos_internacional en precio  
+            
+            Si ruta es "Caracas - Porlamar" Entonces  
+                Incrementar ingresos_ruta_caracas_porlamar en precio  
+            Sino Si ruta es "Porlamar - Caracas" Entonces  
+                Incrementar ingresos_ruta_porlamar_caracas en precio  
+            
+            Mostrar "Boleto comprado con éxito. Total a pagar: precio"  
