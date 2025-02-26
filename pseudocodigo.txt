@@ -75,3 +75,31 @@ Definir variables:
                 Incrementar ingresos_ruta_porlamar_caracas en precio  
             
             Mostrar "Boleto comprado con éxito. Total a pagar: precio"  
+
+    FUNCIÓN ver_sistema()  
+        Mostrar "REPORTE DE VENTAS"  
+        Mostrar total_boletos  
+        Mostrar ingresos_primera, ingresos_segunda, ingresos_tercera  
+        Mostrar ingresos_nacional, ingresos_internacional  
+        Mostrar ingresos_ruta_caracas_porlamar, ingresos_ruta_porlamar_caracas  
+        Mostrar servicios_adicionales  
+
+
+    FUNCIÓN ejecutar()  
+        Mientras Verdadero hacer  
+            Mostrar "Menú"  
+            Mostrar opciones (1. Comprar boleto, 2. Ver sistema, 3. Salir)  
+            Solicitar opción  
+            
+            Si opción es "1" Entonces  
+                Llamar comprar_boleto()  
+            Sino Si opción es "2" Entonces  
+                Llamar ver_sistema()  
+            Sino Si opción es "3" Entonces  
+                Mostrar "Gracias por usar el sistema."  
+                Salir  
+            Sino  
+                Mostrar "Opción no válida."  
+
+    LLAMAR ejecutar()  
+FIN
