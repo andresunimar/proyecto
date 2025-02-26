@@ -11,6 +11,11 @@ precio_primera = 200
 precio_segunda = 150
 precio_tercera = 100
 
+def comprar_boleto():
+    global total_boletos, ingresos_primera, ingresos_segunda, ingresos_tercera
+    global ingresos_nacional, ingresos_internacional, ingresos_ruta_caracas_porlamar
+    global ingresos_ruta_porlamar_caracas, servicios_adicionales
+
 def ver_sistema():
     print("\nREPORTE DE VENTAS")
     print(f"Total de boletos vendidos: {total_boletos}")
