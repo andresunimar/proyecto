@@ -1,0 +1,12 @@
+total_boletos = 0
+ingresos_primera = 0
+ingresos_segunda = 0
+ingresos_tercera = 0
+ingresos_nacional = 0
+ingresos_internacional = 0
+ingresos_ruta_caracas_porlamar = 0
+ingresos_ruta_porlamar_caracas = 0
+servicios_adicionales = 0
+precio_primera = 200
+precio_segunda = 150
+precio_tercera = 100
