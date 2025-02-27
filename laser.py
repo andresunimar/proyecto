@@ -28,11 +28,11 @@ def comprar_boleto():
             continue
         
         clase = input("Seleccione la clase (Primera Clase, Segunda Clase, Tercera Clase): ")
-        if clase == "Primera Clase":
+        if clase == "Primera":
             precio = precio_primera
-        elif clase == "Segunda Clase":
+        elif clase == "Segunda":
             precio = precio_segunda
-        elif clase == "Tercera Clase":
+        elif clase == "Tercera":
             if edad >= 60:
                 print("Los boletos de tercera clase no están disponibles para mayores de 60 años.")
                 continue
@@ -57,11 +57,11 @@ def comprar_boleto():
             servicios_adicionales += 1
         
         total_boletos += 1
-        if clase == "Primera Clase":
+        if clase == "Primera":
             ingresos_primera += precio
-        elif clase == "Segunda Clase":
+        elif clase == "Segunda":
             ingresos_segunda += precio
-        elif clase == "Tercera Clase":
+        elif clase == "Tercera":
             ingresos_tercera += precio
         
         if tipo == "Nacional":
