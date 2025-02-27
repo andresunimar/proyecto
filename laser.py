@@ -27,7 +27,7 @@ def comprar_boleto():
             print("Solo se venden boletos a mayores de 18 años.")
             continue
         
-        clase = input("Seleccione la clase (Primera Clase, Segunda Clase, Tercera Clase): ")
+        clase = input("Seleccione la clase (Primera, Segunda, Tercera): ")
         if clase == "Primera":
             precio = precio_primera
         elif clase == "Segunda":
