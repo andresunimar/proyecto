@@ -4,17 +4,45 @@ ingresos_segunda = 0
 ingresos_tercera = 0
 ingresos_nacional = 0
 ingresos_internacional = 0
-ingresos_ruta_caracas_porlamar = 0
-ingresos_ruta_porlamar_caracas = 0
 servicios_adicionales = 0
+
+# Precios por clase
 precio_primera = 200
 precio_segunda = 150
 precio_tercera = 100
+ruta_nombre = ""
+# Rutas nacionales y sus precios
+def obtener_precio_ruta(ruta_nombre):
+    if ruta_nombre == "Porlamar - Caracas":
+        return 50
+    elif ruta_nombre == "Caracas - Porlamar":
+        return 50
+    elif ruta_nombre == "Puerto Ordaz - Caracas":
+        return 45
+    elif ruta_nombre == "Caracas - Puerto Ordaz":
+        return 45
+    elif ruta_nombre == "Maracaibo - Caracas":
+        return 80
+    elif ruta_nombre == "Caracas - Maracaibo":
+        return 80
+    elif ruta_nombre == "El Vigía - Caracas":
+        return 75
+    elif ruta_nombre == "Caracas - El Vigía":
+        return 75
+    elif ruta_nombre == "Barcelona - Caracas":
+        return 30
+    elif ruta_nombre == "Caracas - Barcelona":
+        return 30
+    elif ruta_nombre == "La Fría - Caracas":
+        return 60
+    elif ruta_nombre == "Caracas - La Fría":
+        return 60
+    else:
+        return 0  # Ruta no válida
 
 def comprar_boleto():
     global total_boletos, ingresos_primera, ingresos_segunda, ingresos_tercera
-    global ingresos_nacional, ingresos_internacional, ingresos_ruta_caracas_porlamar
-    global ingresos_ruta_porlamar_caracas, servicios_adicionales
+    global ingresos_nacional, ingresos_internacional, servicios_adicionales
     
     num_boletos = int(input("Ingrese el número de boletos a comprar: "))
     for _ in range(num_boletos):
@@ -27,12 +55,20 @@ def comprar_boleto():
             print("Solo se venden boletos a mayores de 18 años.")
             continue
         
-        clase = input("Seleccione la clase (Primera, Segunda, Tercera): ")
-        if clase == "Primera":
+        print("Seleccione la clase:")
+        print("1. Primera")
+        print("2. Segunda")
+        print("3. Tercera")
+        clase_opcion = int(input("Ingrese el número de la clase: "))
+        
+        if clase_opcion == 1:
+            clase = "Primera"
             precio = precio_primera
-        elif clase == "Segunda":
+        elif clase_opcion == 2:
+            clase = "Segunda"
             precio = precio_segunda
-        elif clase == "Tercera":
+        elif clase_opcion == 3:
+            clase = "Tercera"
             if edad >= 60:
                 print("Los boletos de tercera clase no están disponibles para mayores de 60 años.")
                 continue
@@ -47,10 +83,20 @@ def comprar_boleto():
         else:
             tipo = "Internacional"
         
+        # Solicitar y calcular el precio de la ruta
         ruta = input("Ingrese la ruta de viaje (ejemplo: Caracas - Porlamar): ")
+        precio_ruta = obtener_precio_ruta(ruta)
+        if precio_ruta == 0:
+            print("Ruta no válida.")
+            continue
+        
+        # Sumar el precio de la ruta al precio base
+        precio += precio_ruta
         
         if edad < 12 or edad >= 60:
             precio *= 0.9  # Aplicar descuento del 10%
+        
+        
         
         adicional = input("¿Requiere servicios adicionales? (S/N): ")
         if adicional.upper() == "S":
@@ -69,12 +115,7 @@ def comprar_boleto():
         else:
             ingresos_internacional += precio
         
-        if ruta == "Caracas - Porlamar":
-            ingresos_ruta_caracas_porlamar += precio
-        elif ruta == "Porlamar - Caracas":
-            ingresos_ruta_porlamar_caracas += precio
-        
-        print(f"Boleto comprado con éxito. Total a pagar: ${precio:.2f}")
+        print(f"Boleto comprado con éxito. Total a pagar: ${precio:.2f} (Ruta: {ruta})")
 
 def ver_sistema():
     print("\nREPORTE DE VENTAS")
@@ -86,11 +127,7 @@ def ver_sistema():
     print("Ingresos por tipo de boleto:")
     print(f"  Nacional: ${ingresos_nacional:.2f}")
     print(f"  Internacional: ${ingresos_internacional:.2f}")
-    print("Ingresos por ruta de viaje:")
-    print(f"  Caracas - Porlamar: ${ingresos_ruta_caracas_porlamar:.2f}")
-    print(f"  Porlamar - Caracas: ${ingresos_ruta_porlamar_caracas:.2f}")
     print(f"Número de servicios adicionales solicitados: {servicios_adicionales}")
-
 
 def ejecutar():
     while True:
@@ -110,4 +147,3 @@ def ejecutar():
             print("Opción no válida, intente de nuevo.")
 
 ejecutar()
-
